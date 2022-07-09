@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+	/* Реализовать функцию-конструктор, создающую объекты людей. 
+	Входные параметры: “ФИО”, “Возраст”, “Пол”. 
+	Реализовать метод, выводящий в консоль информацию о сотрудниках, 
+	обрамленную в рамку из звездочек: */
+	
+    function Person (name, age, gender) {
+    this.name=name;
+    this.age=age;
+    this.gender=gender;
+}
+
+    Person.prototype.showBorder = function() {
+    let maxLenght = Math.max(`ФИО: ${this.name}`.length, `Возраст: ${this.age}`.length, `Пол сотрудника: ${this.gender}`.length);
+   
+    console.log('*'.repeat(maxLenght + 4));
+    console.log('* ' + 'ФИО: ' + this.name + addSpace('ФИО: ' + this.name) + ' *');
+    console.log('* ' + 'Возраст: ' + this.age + addSpace('Возраст: ' + this.age) + ' *');
+    console.log('* ' + 'Пол сотрудника: ' + this.gender + addSpace('Пол сотрудника: ' + this.gender) + ' *');
+    console.log('*'.repeat(maxLenght + 4));
+
+    
+
+    function addSpace(str){
+            return ' '.repeat(maxLenght - str.length);
+    }    
+    
+    };
+
+    let person1 = new Person('Петров Петр Петрович', 35, 'мужской');
+    person1.showBorder();
+
+
+    let person2 = new Person('Ким Ли', 25, 'мужской');
+    person2.showBorder();
+
+
+    let person3 = new Person('Котова Валентина Николевна', 63, 'женский');
+    person3.showBorder();
+
+    </script>
+    
+</body>
+</html>
